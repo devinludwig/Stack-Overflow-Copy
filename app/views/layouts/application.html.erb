@@ -3,7 +3,7 @@
   <head>
     <title>StackOverflow</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -11,9 +11,11 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Stack Overflow</a>
+        <a href="/" class="brand-logo">Stack Overflow</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if current_user %>
+            <li><%= link_to "Ask", new_user_question_path(current_user) %></li>
+            <li><%= link_to current_user.username, user_path(current_user) %></li>
             <li><%= link_to "Log Out", log_out_path %></li>
           <% else %>
             <li><%= link_to "Log In", log_in_path %></li>

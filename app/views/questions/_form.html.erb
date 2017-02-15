@@ -1,0 +1,9 @@
+<%=form_for [current_user, @question] do |f| %>
+
+  <%=f.label :content, "Ask Away" %>
+
+  <%=f.text_field :content %>
+
+  <%=f.submit "Ask" %>
+
+<%end%>

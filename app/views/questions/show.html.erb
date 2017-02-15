@@ -1,0 +1,26 @@
+<div class="voter">
+  <%= link_to raw('<i class="material-icons">thumb_up</i>'), user_question_path(@question.user, @question, vote: "up"),:method => :put, class: "btn" %>
+  <br>
+  <h4>  <%= @question.rating %></h4>
+  <br>
+  <%= link_to raw('<i class="material-icons">thumb_down</i>'), user_question_path(@question.user, @question, vote: "down"), :data => {:method => :put}, class: "btn red" %>
+</div>
+<h2><%= @question.content %></h2>
+
+<ul class="collection">
+  <% @question.answers.order('rating DESC').each do |answer| %>
+    <li class="collection-item row">
+      <div class="col s2">
+        <%= link_to raw('<i class="material-icons">thumb_up</i>'), question_answer_path(answer.question, answer, vote: "up"), :data => {:method => :put}, class: "btn" %>
+        <br>
+        <h4>  <%= answer.rating %></h4>
+        <br>
+        <%= link_to raw('<i class="material-icons">thumb_down</i>'), question_answer_path(answer.question, answer, vote: "down"), :data => {:method => :put}, class: "btn red" %>
+      </div>
+      <h4 class="col s10">
+        <%= answer.content %>
+      </h4>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Give Your Answer", new_question_answer_path(@question), class: 'right' %>

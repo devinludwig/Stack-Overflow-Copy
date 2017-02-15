@@ -1,4 +1,8 @@
 @import "materialize/components/color";
 $primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
+$secondary-color: color("green", "base") !default;
 @import "materialize";
+
+.voter {
+  float: left;
+}

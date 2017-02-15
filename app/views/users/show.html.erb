@@ -1,0 +1,23 @@
+<ul class="collection with-header">
+  <li class="collection-header">Your Questions</li>
+  <% current_user.questions.each do |question| %>
+    <li class="collection-item">
+      <%= link_to question.content, user_question_path(current_user,question) %>
+      <%= link_to raw('<i class="material-icons">mode_edit</i>'), edit_user_question_path(current_user, question), class: "btn green" %>
+      <%= link_to raw('<i class="material-icons">delete</i>'), user_question_path(current_user, question), class: "btn red right", :data => {:confirm => "You sure?", :method => "delete"} %>
+    </li>
+  <% end %>
+</ul>
+
+<ul class="collection with-header">
+  <li class="collection-header">Your Answers</li>
+  <% current_user.answers.each do |answer| %>
+    <li class="collection-item">
+      <%= link_to answer.question.content, user_question_path(answer.question.user, answer.question) %>
+      <br> <h3> <%=  answer.content %></h3>
+
+      <%= link_to raw('<i class="material-icons">mode_edit</i>'), edit_question_answer_path(answer.question, answer), class: "btn green" %>
+      <%= link_to raw('<i class="material-icons">delete</i>'), user_question_path(answer.question, answer), class: "btn red right", :data => {:confirm => "You sure?", :method => "delete"} %>
+    </li>
+  <% end %>
+</ul>

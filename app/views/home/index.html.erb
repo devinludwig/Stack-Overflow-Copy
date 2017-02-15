@@ -1,1 +1,12 @@
-WELCOME TO MY WEBSITE
+<h1>Welcome
+  <% if current_user %>
+     , <%= current_user.username %></h1>
+  <% end %>
+<h3>Open Questions:</h3>
+<ul>
+  <% Question.all.each do |question| %>
+    <li>
+      <%= link_to question.content, user_question_path(question.user, question) %>
+    </li>
+  <% end %>
+</ul>
