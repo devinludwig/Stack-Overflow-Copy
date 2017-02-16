@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, :only => [:new, :show] do
+  resources :users, :only => [:new, :show, :create] do
     resources :questions
     resources :answers, :only => []
   end
